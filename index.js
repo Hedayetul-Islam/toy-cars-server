@@ -34,11 +34,11 @@ async function run() {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) }
 
-      const options = {
-          projection: { sellerName: 1, toyName: 1, subCategory: 1, price: 1, quantity: 1 },
-      };
+      // const options = {
+      //     projection: { sellerName: 1, toyName: 1, subCategory: 1, price: 1, quantity: 1 },
+      // };
 
-      const result = await toyCollection.findOne(query, options);
+      const result = await toyCollection.findOne(query);
       res.send(result);
   })
 
