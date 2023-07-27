@@ -44,9 +44,6 @@ async function run() {
     app.get('/cars', async (req, res) => {
       console.log(req.query.email);
       let query = {};
-      // const search = req.query.search;
-      // console.log(search);
-      // var query = { toyName: { $regex: search, $options: 'i' } }
       if (req.query?.email) {
         query = { email: req.query.email }
       }
