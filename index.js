@@ -105,5 +105,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Baby Toy shop server is running on port: ${port}`)
+  console.log(`Baby Toy car server is running on port: ${port}`)
 })
