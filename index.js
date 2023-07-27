@@ -9,10 +9,6 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// DB_USER=babyShop
-// DB_PASS=eEXVzlYXnTKV8GNG
-
-
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.mlvhv5a.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -47,10 +43,10 @@ async function run() {
 
     app.get('/cars', async (req, res) => {
       console.log(req.query.email);
-      var query = {};
-      const search = req.query.search;
-      console.log(search);
-      var query = { toyName: { $regex: search, $options: 'i' } }
+      let query = {};
+      // const search = req.query.search;
+      // console.log(search);
+      // var query = { toyName: { $regex: search, $options: 'i' } }
       if (req.query?.email) {
         query = { email: req.query.email }
       }
@@ -65,13 +61,10 @@ async function run() {
       res.send(result);
     })
 
-    // app.get('/cars', async (req, res) => {
-    //   const search = req.query.search;
-    //   console.log(search);
-    //   const query = { toyName: { $regex: search, $options: 'i' } }
-    //   const result = await toyCollection.find(query).toArray();
-    //   res.send(result);
-    // })
+    app.get('/cars', async (req, res) => {
+      const result = await toyCollection.find().toArray();
+      res.send(result);
+    })
 
 
     app.put('/cars/:id', async (req, res) => {
